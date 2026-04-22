@@ -35,7 +35,9 @@ export default function GiftBoxAnimation() {
       sx={{
         overflow: 'none',
         width: '100%',
-        height: '100vh',
+        height: '100svh',
+        //@ts-ignore
+        height: '100dvh',
         backgroundImage: `url(${background})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -72,7 +74,7 @@ export default function GiftBoxAnimation() {
       {/* Elephant animation */}
       <Box
         sx={{
-          width: '350px',
+          width: '300px',
           position: 'absolute',
           bottom: '-50px',
           left: '50%',
@@ -97,9 +99,10 @@ export default function GiftBoxAnimation() {
       <ElephantSpeechBubble>
         <Typography>
           Fantastico! <br />
-          Un file è stato scaricato nel tuo dispositivo. <br />
-          Troverai tutto lì. <br />
-          Ciaoooooo!!!{' '}
+          Troverai tutto nel file che
+          <br />
+          è appena stato scaricato! <br />
+          Adióssss!!!
         </Typography>
       </ElephantSpeechBubble>
     </Stack>

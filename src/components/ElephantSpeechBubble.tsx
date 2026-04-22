@@ -9,7 +9,7 @@ export default function ElephantThoughtBubbleTropical({ children }) {
       animate={{
         scale: 1,
         opacity: 1,
-        y: [0, -10, 0], // galleggia
+        y: [0, -15, 0], // galleggia
       }}
       transition={{
         duration: 0.6,
@@ -22,7 +22,7 @@ export default function ElephantThoughtBubbleTropical({ children }) {
       }}
       style={{
         position: 'absolute',
-        bottom: '230px',
+        bottom: '180px',
         left: 0,
         right: 0,
         width: '100%',

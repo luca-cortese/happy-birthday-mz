@@ -79,11 +79,12 @@ const VerificationCode = ({ values, setValues, codeIsRight }) => {
             inputProps={{
               maxLength: 1,
               style: {
-                height: isMobile ? '50px' : '70px',
+                height: '45px',
+                width: 45,
                 textAlign: 'center',
-                fontSize: 36,
+                fontSize: 28,
                 padding: 0,
-                lineHeight: isMobile ? '50px' : '70px', // Match the height
+                lineHeight: '45px',
               },
             }}
             variant="outlined"

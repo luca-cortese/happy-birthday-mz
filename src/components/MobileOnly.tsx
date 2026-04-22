@@ -28,7 +28,9 @@ export default function MobileOnly({ children }) {
         </style>
         <Box
           sx={{
-            height: '100vh',
+            height: '100svh',
+            //@ts-ignore
+            height: '100dvh',
             width: '100vw',
             display: 'flex',
             justifyContent: 'center',

@@ -26,7 +26,7 @@ import background from '../img/verification_code_background.webp';
 
 const CheckVerificationCode = () => {
   const isMobile = useMediaQuery('(max-width:600px)');
-  const fontSize = isMobile ? 22 : 26;
+  const fontSize = isMobile ? 21 : 26;
   const [values, setValues] = useState(Array(6).fill(''));
   const [showError, setShowError] = useState<boolean>(false);
   const [codeIsRight, setCodeIsRight] = useState<boolean>();
@@ -119,11 +119,9 @@ const CheckVerificationCode = () => {
           }
         >
           <Typography sx={{ fontSize: '16px' }}>
-            Codice errato!
+            Atenciónnn! Il codice è errato!
             <br />
-            Solo una persona può scartare il regalo!
-            <br />
-            Siamo sicuri che sei te?
+            C'è solo una persona che può scartare il regalo!
           </Typography>
         </Alert>
       </Slide>
@@ -142,7 +140,9 @@ const CheckVerificationCode = () => {
               sx={{
                 overflow: 'none',
                 width: '100%',
-                height: '100vh',
+                height: '100svh',
+                //@ts-ignore
+                height: '100dvh',
                 backgroundImage: `url(${background})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -152,7 +152,7 @@ const CheckVerificationCode = () => {
               className="slide-down"
             >
               <Stack
-                sx={{ marginTop: '250px' }}
+                sx={{ marginTop: '210px' }}
                 alignContent={'center'}
                 alignItems={'center'}
               >
@@ -168,7 +168,8 @@ const CheckVerificationCode = () => {
                 >
                   ma per essere scartato
                   <br />
-                  il codice segreto va indicato!
+                  il codice segreto
+                  <br /> va indicato!
                 </Typography>
                 <VerificationCode
                   values={values}
@@ -186,12 +187,13 @@ const CheckVerificationCode = () => {
                     sx={{
                       boxShadow: '0px 4px 10px rgba(0,0,0,0.3)',
                       mt: '20px',
-                      width: '300px',
+                      width: '220px',
+                      borderRadius: '10px',
                       backgroundColor: '#ededd5',
                     }}
                   >
                     <Typography sx={{ color: '#221a4d' }} fontSize={fontSize}>
-                      Scarta il regalo
+                      Scarta
                     </Typography>
                     <Lottie
                       animationData={giftAnimation}
@@ -200,8 +202,8 @@ const CheckVerificationCode = () => {
                       style={{
                         marginTop: '-15px',
                         marginLeft: '10px',
-                        width: '70px',
-                        height: '70px',
+                        width: '60px',
+                        height: '60px',
                       }}
                     />
                   </Button>
@@ -218,18 +220,6 @@ const CheckVerificationCode = () => {
                 }}
               >
                 <Lottie animationData={Monkey} autoplay={true} />
-              </Box>
-
-              {/* Jumping fish animation */}
-              <Box
-                sx={{
-                  width: '150px',
-                  position: 'absolute',
-                  bottom: '200px',
-                  ml: '150px',
-                }}
-              >
-                <Lottie animationData={JumpingFish} autoplay={true} />
               </Box>
 
               {/* Shark animation */}
@@ -271,7 +261,9 @@ const CheckVerificationCode = () => {
             top: 0,
             left: 0,
             width: '100vw',
-            height: '100vh',
+            height: '100svh',
+            //@ts-ignore
+            height: '100dvh',
             backgroundColor: 'rgba(255,255,255,0.75)',
             zIndex: 99999,
             display: 'flex',
