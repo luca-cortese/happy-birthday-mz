@@ -52,6 +52,7 @@ const VerificationCode = ({ values, setValues, codeIsRight }) => {
             `,
 
               '& .MuiInputBase-input': {
+                textTransform: 'uppercase',
                 color: '#3a2a1a',
                 fontWeight: 600,
 

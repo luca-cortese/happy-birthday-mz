@@ -11,7 +11,7 @@ import WalkingApe from '../animations/walking_ape.json';
 import { motion, AnimatePresence } from 'framer-motion';
 
 //@ts-ignore
-import background from '../img/background.png';
+import background from '../img/background.webp';
 
 const Intro = () => {
   const [showIntro, setShowIntro] = useState<boolean>(true);

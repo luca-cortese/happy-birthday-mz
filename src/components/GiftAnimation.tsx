@@ -6,7 +6,7 @@ import Turtle from '../animations/turtle.json';
 import Elephant from '../animations/elephant.json';
 
 //@ts-ignore
-import background from '../img/last-step-background-2.png';
+import background from '../img/last-step-background.webp';
 import ElephantSpeechBubble from './ElephantSpeechBubble.tsx';
 
 export default function GiftBoxAnimation() {
@@ -15,11 +15,13 @@ export default function GiftBoxAnimation() {
   const [visible, setVisible] = useState(false);
 
   const downloadTextFile = () => {
-    const blob = new Blob(['Hello, world!'], { type: 'text/plain' });
+    const blob = new Blob(['Hello, world!'], {
+      type: 'application/octet-stream',
+    });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'hello.txt';
+    link.download = 'BuonCompleanno.pdf';
     link.click();
     URL.revokeObjectURL(url);
   };

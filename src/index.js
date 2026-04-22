@@ -8,7 +8,7 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {
-    fontFamily: `'SnowyNight', 'Segoe UI', 'Roboto', sans-serif`,
+    fontFamily: `'Bubblegum Sans', 'Segoe UI', 'Roboto', sans-serif`,
   },
 });
 

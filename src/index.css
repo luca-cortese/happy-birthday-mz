@@ -1,20 +1,9 @@
-@font-face {
-  font-family: 'SnowyNight';
-  src: url('./fonts/SnowyNight.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
+  text-transform: uppercase;
   overflow: hidden;
   margin: 0;
-  font-family: 'SnowyNight', 'Segoe UI', 'Roboto', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   margin: 0;
-}
-
-code {
-  font-family: 'SnowyNight', 'Segoe UI', 'Roboto', monospace;
 }

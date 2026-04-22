@@ -18,9 +18,10 @@ import Shark from '../animations/shark.json';
 import JumpingFish from '../animations/jumping_fish.json';
 import Monkey from '../animations/monkey.json';
 import { motion, AnimatePresence } from 'framer-motion';
+import axios from 'axios';
 
 //@ts-ignore
-import background from '../img/verification_code_background_5.png';
+import background from '../img/verification_code_background.webp';
 
 const CheckVerificationCode = () => {
   const isMobile = useMediaQuery('(max-width:600px)');
@@ -30,11 +31,21 @@ const CheckVerificationCode = () => {
   const [codeIsRight, setCodeIsRight] = useState<boolean>();
   const [showGift, setShowGift] = useState(false);
 
-  const checkForVerificationCode = () => {
-    if (values.join('') !== '123456') {
-      setShowError(true);
-      setCodeIsRight(false);
-    } else {
+  const API_URL = process.env.REACT_APP_API_URL;
+
+  const checkForVerificationCode = async (code) => {
+    const response = await axios.post(
+      API_URL as string,
+      { code: code.toUpperCase() },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        timeout: 8000,
+      }
+    );
+
+    if (response.data) {
       setTimeout(() => {
         setShowGift(true); // start after shark animation
       }, 5500); // <-- shark animation duration
@@ -42,6 +53,9 @@ const CheckVerificationCode = () => {
       setShowError(false);
 
       setCodeIsRight(true); // start suddenly
+    } else {
+      setShowError(true);
+      setCodeIsRight(false);
     }
   };
 
@@ -153,7 +167,7 @@ const CheckVerificationCode = () => {
                   sx={{ width: '100%', mt: 1 }}
                 >
                   <Button
-                    onClick={checkForVerificationCode}
+                    onClick={() => checkForVerificationCode(values.join(''))}
                     sx={{
                       boxShadow: '0px 4px 10px rgba(0,0,0,0.3)',
                       mt: '20px',

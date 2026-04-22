@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.15.1",
     "framer-motion": "^12.38.0",
     "lottie-react": "^2.4.1",
     "react": "^19.2.0",
@@ -25,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "lcp --proxyUrl https://n7euq00ck2.execute-api.eu-central-1.amazonaws.com/PROD"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "local-cors-proxy": "^1.1.0",
     "typescript": "^5.9.3"
   }
 }
