@@ -75,7 +75,7 @@ const Intro = () => {
                   <Typography
                     className="engraved"
                     sx={{
-                      fontSize: '24px',
+                      fontSize: '22px',
                       textAlign: 'center',
                       marginTop: '330px',
                       color: '#ededd5',

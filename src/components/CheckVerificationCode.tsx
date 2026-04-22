@@ -17,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Shark from '../animations/shark.json';
 import JumpingFish from '../animations/jumping_fish.json';
 import Monkey from '../animations/monkey.json';
+import Loading from '../animations/loading.json';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 
@@ -30,32 +31,46 @@ const CheckVerificationCode = () => {
   const [showError, setShowError] = useState<boolean>(false);
   const [codeIsRight, setCodeIsRight] = useState<boolean>();
   const [showGift, setShowGift] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
   const API_URL = process.env.REACT_APP_API_URL;
 
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
   const checkForVerificationCode = async (code) => {
-    const response = await axios.post(
-      API_URL as string,
-      { code: code.toUpperCase() },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        timeout: 8000,
+    try {
+      setIsLoading(true);
+
+      // Avvio in parallelo:
+      const apiCall = axios.post(
+        API_URL as string,
+        { code: code.toUpperCase() },
+        {
+          headers: { 'Content-Type': 'application/json' },
+          timeout: 8000,
+        }
+      );
+
+      const minimumWait = delay(3000); // 3 secondi minimi
+
+      // Aspetto sia la risposta API che i 3 secondi
+      const [response] = await Promise.all([apiCall, minimumWait]);
+
+      if (response.data) {
+        setTimeout(() => {
+          setShowGift(true);
+        }, 5500);
+
+        setShowError(false);
+        setCodeIsRight(true);
+      } else {
+        setShowError(true);
+        setCodeIsRight(false);
       }
-    );
-
-    if (response.data) {
-      setTimeout(() => {
-        setShowGift(true); // start after shark animation
-      }, 5500); // <-- shark animation duration
-
-      setShowError(false);
-
-      setCodeIsRight(true); // start suddenly
-    } else {
+    } catch (err) {
       setShowError(true);
       setCodeIsRight(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -145,7 +160,7 @@ const CheckVerificationCode = () => {
                   className="engraved"
                   sx={{
                     mb: '20px',
-                    fontSize: '24px',
+                    fontSize: '21px',
                     textAlign: 'center',
                     color: '#ededd5',
                   }}
@@ -248,6 +263,35 @@ const CheckVerificationCode = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {isLoading && (
+        <Box
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'rgba(255,255,255,0.75)',
+            zIndex: 99999,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: '32px',
+              fontWeight: 'bold',
+              color: '#333',
+            }}
+          >
+            <Box sx={{ width: 200, height: 200 }}>
+              <Lottie animationData={Loading} loop autoplay />
+            </Box>
+          </Typography>
+        </Box>
+      )}
     </>
   );
 };

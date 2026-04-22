@@ -99,7 +99,7 @@ export default function GiftBoxAnimation() {
           Fantastico! <br />
           Un file è stato scaricato nel tuo dispositivo. <br />
           Troverai tutto lì. <br />
-          Ciaoooooo!!!
+          Ciaoooooo!!!{' '}
         </Typography>
       </ElephantSpeechBubble>
     </Stack>
