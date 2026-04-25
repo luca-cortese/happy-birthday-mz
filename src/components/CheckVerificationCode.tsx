@@ -119,7 +119,7 @@ const CheckVerificationCode = () => {
           }
         >
           <Typography sx={{ fontSize: '16px' }}>
-            Atenciónnn! Il codice è errato!
+            Atención! Il codice è errato!
             <br />
             Solo una persona conosce il codice segreto!
           </Typography>

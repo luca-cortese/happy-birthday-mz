@@ -93,11 +93,10 @@ export default function GiftBoxAnimation() {
 
       <ElephantSpeechBubble>
         <Typography>
-          Fantastico! <br />
-          Troverai tutto nel file che
+          Dovrebbe essersi scaricato un PDF!
           <br />
-          è appena stato scaricato! <br />
-          Adióssss!!!
+          Troverai tutto lì dentro! <br />
+          Adiós!
         </Typography>
       </ElephantSpeechBubble>
     </Stack>
