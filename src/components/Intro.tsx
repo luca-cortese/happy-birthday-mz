@@ -13,6 +13,11 @@ import giftAnimation from '../animations/gift-animation.json';
 
 //@ts-ignore
 import background from '../img/background.webp';
+//@ts-ignore
+import woodTexture from '../img/dark_wood.webp';
+
+//@ts-ignore
+import liana from '../img/liana.webp';
 
 const Intro = () => {
   const [showIntro, setShowIntro] = useState<boolean>(true);
@@ -73,45 +78,132 @@ const Intro = () => {
                   position: 'relative',
                 }}
               >
-                {/* Testo + bottone */}
-                <Stack sx={{ alignItems: 'center' }}>
-                  <Typography
-                    className="engraved"
+                <Box
+                  sx={{
+                    height: '50vh',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'flex-start',
+                  }}
+                >
+                  <Box
+                    className="swing"
                     sx={{
-                      fontSize: '21px',
-                      textAlign: 'center',
-                      marginTop: '270px',
-                      color: '#ededd5',
+                      position: 'relative',
+                      transformOrigin: 'top center',
+                      animation: 'gentleSwing 6s ease-in-out infinite',
+                      '@keyframes gentleSwing': {
+                        '0%': { transform: 'rotate(-2deg)' },
+                        '50%': { transform: 'rotate(2deg)' },
+                        '100%': { transform: 'rotate(-2deg)' },
+                      },
                     }}
                   >
-                    <span>Feliz cumpleaños</span>
-                    <br />
-                    <span>Martina!</span>
-                  </Typography>
-
-                  <Button
-                    onClick={() => setShowIntro(false)}
-                    sx={{
-                      boxShadow: '0px 4px 10px rgba(0,0,0,0.3)',
-                      mt: '20px',
-                      width: '220px',
-                      backgroundColor: '#ededd5',
-                    }}
-                  >
-                    <Typography color="#221a4d">SCARTA IL REGALO</Typography>
-                    <Lottie
-                      animationData={giftAnimation}
-                      loop
-                      autoplay
-                      style={{
-                        marginTop: '-15px',
-                        marginLeft: '10px',
-                        width: '60px',
-                        height: '60px',
+                    {/* Corda sinistra */}
+                    <Box
+                      sx={{
+                        width: '14px', // più spessa
+                        height: '90px',
+                        backgroundImage: `url(${liana})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderRadius: '999px',
+                        position: 'absolute',
+                        left: '22%',
+                        top: '-5px',
+                        boxShadow: '0 0 4px rgba(0,0,0,0.35)',
                       }}
                     />
-                  </Button>
-                </Stack>
+
+                    {/* Corda destra */}
+                    <Box
+                      sx={{
+                        width: '14px',
+                        height: '90px',
+                        backgroundImage: `url(${liana})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderRadius: '999px',
+                        position: 'absolute',
+                        right: '22%',
+                        top: '-5px',
+                        boxShadow: '0 0 4px rgba(0,0,0,0.35)',
+                      }}
+                    />
+
+                    {/* Cartello */}
+                    <Box
+                      sx={{
+                        mt: '80px',
+                        px: 4,
+                        py: 2,
+                        backgroundImage: `url(${woodTexture})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderRadius: '8px',
+                        boxShadow: `
+                        inset 0 2px 4px rgba(255,255,255,0.3),   /* luce sopra */
+                        inset 0 -3px 6px rgba(0,0,0,0.4),        /* ombra sotto */
+                        0 8px 20px rgba(0,0,0,0.25)              /* ombra esterna */
+                      `,
+                        border: '2px solid rgba(0,0,0,0.3)',
+                        fontSize: '1.4rem',
+                        fontWeight: 500,
+                        textAlign: 'center',
+                        transform: 'translateZ(0)',
+                        minHeight: '300px',
+                      }}
+                    >
+                      {/* Testo + bottone */}
+                      <Stack sx={{ alignItems: 'center' }}>
+                        <Typography
+                          className="engraved"
+                          sx={{
+                            fontSize: '21px',
+                            textAlign: 'center',
+                            marginTop: '40px',
+                            color: '#ededd5',
+                          }}
+                        >
+                          <span>Feliz cumpleaños</span>
+                          <br />
+                          <span>Martina!</span>
+                          <br />
+                          <br />
+                          <span>Ti va di scartare</span>
+                          <br />
+                          <span>un regalino?</span>
+                        </Typography>
+
+                        <Button
+                          onClick={() => setShowIntro(false)}
+                          sx={{
+                            boxShadow: '0px 4px 10px rgba(0,0,0,0.3)',
+                            width: '220px',
+                            backgroundColor: '#ededd5',
+                            bottom: '20px',
+                            position: 'absolute',
+                          }}
+                        >
+                          <Typography color="#221a4d">
+                            SCARTA IL REGALO
+                          </Typography>
+                          <Lottie
+                            animationData={giftAnimation}
+                            loop
+                            autoplay
+                            style={{
+                              marginTop: '-15px',
+                              marginLeft: '10px',
+                              width: '60px',
+                              height: '60px',
+                            }}
+                          />
+                        </Button>
+                      </Stack>
+                    </Box>
+                  </Box>
+                </Box>
 
                 {/* Tiger */}
                 <Lottie
@@ -119,7 +211,7 @@ const Intro = () => {
                   autoplay
                   style={{
                     zIndex: 2,
-                    width: '220px',
+                    width: '260px',
                     position: 'absolute',
                     bottom: '20px',
                     left: '50%',

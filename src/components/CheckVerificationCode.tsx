@@ -121,7 +121,7 @@ const CheckVerificationCode = () => {
           <Typography sx={{ fontSize: '16px' }}>
             Atenciónnn! Il codice è errato!
             <br />
-            C'è solo una persona che può scartare il regalo!
+            Solo una persona conosce il codice segreto!
           </Typography>
         </Alert>
       </Slide>
