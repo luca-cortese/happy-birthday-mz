@@ -14,20 +14,15 @@ export default function GiftBoxAnimation() {
   const speed = 0.01;
   const [visible, setVisible] = useState(false);
 
-  const downloadTextFile = () => {
-    const blob = new Blob(['Hello, world!'], {
-      type: 'application/octet-stream',
-    });
-    const url = URL.createObjectURL(blob);
+  const downloadHappyBirthdayFile = () => {
     const link = document.createElement('a');
-    link.href = url;
-    link.download = 'BuonCompleanno.pdf';
+    link.href = '/regalino_compleanno.pdf';
+    link.download = 'regalino_compleanno.pdf';
     link.click();
-    URL.revokeObjectURL(url);
   };
 
   useEffect(() => {
-    downloadTextFile();
+    downloadHappyBirthdayFile();
   });
 
   return (
